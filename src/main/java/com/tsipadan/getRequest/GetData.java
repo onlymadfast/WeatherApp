@@ -33,9 +33,9 @@ public class GetData {
     Response response = RestAssured.get("http://api.openweathermap.org/data/2.5/weather?lat=59.9386300&lon=30.3141300&units=metric&appid=89f161f53c2fdc3bed1b76477a0d50d5");
     JsonPath jsonPath = response.jsonPath();
 
-    //print JSON
-    response.jsonPath().prettyPrint();
-    System.out.println("---------------------------------");
+    //print JSON ... if need it
+//    response.jsonPath().prettyPrint();
+//    System.out.println("---------------------------------");
 
     //current date and time
     System.out.println("Today: " + formatter.format(date));
@@ -48,10 +48,10 @@ public class GetData {
 
     //temperature, feelsLike, humidity, pressure
     LinkedHashMap<String, Float> main = jsonPath.get("main");
-    System.out.println("Temp: " + main.get("temp"));
-    System.out.println("FeelsLike: " + main.get("feels_like"));
-    System.out.println("Humidity: " + main.get("humidity"));
-    System.out.println("Pressure: " + main.get("pressure"));
+    System.out.print("Temp: " + main.get("temp")
+    + " | FeelsLike: " + main.get("feels_like")
+    + " | Humidity: " + main.get("humidity")
+    + " | Pressure: " + main.get("pressure"));
 
     //wind speed
     LinkedHashMap<String, Integer> wind = jsonPath.get("wind");
